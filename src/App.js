@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import Blogs from './components/Blogs';
 import fetchblogs from './WordpressAPI/api';
 
-
 function App() {
   const [posts, setPosts] = useState([]);
 
