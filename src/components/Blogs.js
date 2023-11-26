@@ -1,9 +1,17 @@
 import React from "react";
-import blog1 from '../assets/blog1.png';
-// import blog2 from '../assets/blog2.png';
-// import blog3 from '../assets/blog3.png';
+import { parseDate } from "../supporter/parse_date";
+import { trimString } from "../supporter/trim_string";
 
-const Blogs = () => {
+const Blogs = ({post}) => {
+    const p = {
+        blogCover: post.featured_media,
+        blogTitle: trimString(post.title.rendered),
+        blogTitleLink: post.link,
+        authorName: post._embedded.author[0].name,
+        authorLink: post._embedded.author[0].link,
+        date: parseDate(post.date_gmt),
+    };
+
     return(       
         <div className="p-card--highlighted col-4 p-bordertop--accent flex-space-between">
             <div>
@@ -11,16 +19,16 @@ const Blogs = () => {
                     CLOUD AND SERVER
                 </p>
                 <hr className="is-muted" />
-                <img class="p-card__image" src={blog1} alt="Blog1" height="185" width="330"></img>
-                <a href="www.w3school.com" target="_blank">
+                <img class="p-card__image" src={p.blogCover} alt="Blog" height="185" width="330"></img>
+                <a href={p.blogTitleLink} target="_blank" rel="noreferrer">
                     <p className="p-heading--3" style={{ fontWeight: 300 }}>
-                        The power of installed-base snap metrics
+                        {p.blogTitle}
                     </p>
                 </a>
             </div>
             <div>
                 <p class="p-heading--6">
-                    By cproc on 27 November 2018
+                    By <a href={p.authorLink} target="_blank" rel="noreferrer">{p.authorName}</a> on {p.date}
                 </p>
                 <hr className="is-muted" />
                 <p class="p-text--small u-no-margin--bottom">Article</p>
