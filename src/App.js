@@ -1,7 +1,7 @@
-import './style.scss';
-import { useState, useEffect } from 'react';
-import Blogs from './components/Blogs';
-import fetchblogs from './WordpressAPI/api';
+import "./style.scss";
+import { useState, useEffect } from "react";
+import Blogs from "./components/Blogs";
+import fetchblogs from "./WordpressAPI/api";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -13,9 +13,11 @@ function App() {
   }, []);
 
   return (
-    <div >
-      <div className='row'>
-        {posts.map((p) => <Blogs post={p} key={p.id}/>)}
+    <div>
+      <div className="row">
+        {posts.map((p) => (
+          <Blogs post={p} key={p.id} />
+        ))}
       </div>
     </div>
   );
