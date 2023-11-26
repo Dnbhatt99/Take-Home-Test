@@ -1,0 +1,17 @@
+@import 'vanilla-framework';
+@include vanilla;
+
+.row{
+    margin-top: 1%;
+}
+
+.p-bordertop--accent {
+    border-top: 3px solid;
+    border-color: #b878a9;
+}
+  
+.flex-space-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
