@@ -9,6 +9,7 @@
     "css-loader": "^6.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.4.5",
     "react-scripts": "5.0.1",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
