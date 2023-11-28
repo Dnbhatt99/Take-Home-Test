@@ -4,25 +4,28 @@ import { trimString } from "../supporter/trim_string";
 
 const Blogs = ({ post }) => {
   const p = {
-    blogCover: post.featured_media,
+    blogCoverURL: post.featured_media,
+    altAttribute: post._embedded['wp:featuredmedia']
+      ? post._embedded['wp:featuredmedia'][0].alt_text
+      : 'Blog',
     blogTitle: trimString(post.title.rendered),
     blogTitleLink: post.link,
     authorName: post._embedded.author[0].name,
     authorLink: post._embedded.author[0].link,
-    date: parseDate(post.date),
+    blogDate: parseDate(post.date),
   };
 
   return (
-    <div className="p-card--highlighted col-4 p-border flex-space">
+    <div className="col-4 p-card--highlighted p-border flex-space">
       <div>
-        <p className="p-text--x-small-capitalised u-no-padding--top">
-          CLOUD AND SERVER
+        <p className="u-no-padding--top p-text--x-small-capitalised">
+          Cloud and Server
         </p>
         <hr className="is-muted" />
         <img
           class="p-card__image"
-          src={p.blogCover}
-          alt="Blog"
+          src={p.blogCoverURL}
+          alt={p.altAttribute}
         ></img>
         <a href={p.blogTitleLink} target="_blank" rel="noreferrer">
           <p className="p-heading--4">
@@ -36,7 +39,7 @@ const Blogs = ({ post }) => {
           <a href={p.authorLink} target="_blank" rel="noreferrer">
             {p.authorName}
           </a>{" "}
-          on {p.date}
+          on {p.blogDate}
         </p>
         <hr className="is-muted" />
         <p class="p-text--small u-no-margin--bottom">Article</p>
